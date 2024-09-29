@@ -1,5 +1,5 @@
 // COMSC210 | Lab 15 | Winston Jose
-//
+// Github line: https://github.com/winstonjose01/COMSC210-Lab15-MovieClass
 
 # include <iostream>
 # include <fstream>
@@ -7,8 +7,10 @@
 # include <iomanip>
 using namespace std;
 
+// Function declaration
 int openFile(fstream &, string);
 
+// Movie object
 class Movie{
     private:
         string movie_title;
@@ -36,21 +38,21 @@ class Movie{
     string getScreenWriter()    {return screen_writer;}
     // Prints the object from the vector
     void print() const {
-        cout << "Movie :" << movie_title << endl; // Print the movie title
-        cout << "\tYear released :"<< year_released << endl; // Print the year released
-        cout << "\tScreenwriter: " << screen_writer << endl;
-
+        cout << "Movie : " << movie_title << endl; // Print the movie title
+        cout << "\tYear released : "<< year_released << endl; // Print the year released
+        cout << "\tScreenwriter: " << screen_writer << endl; // Print the screenwriter
     }
-
 };
 
 
 main(){
     fstream filestream;
+    // File that contains the movie information
     string filename = "moviefile.txt";
     string line;
+    // Create vector to store the movie objects
     vector <Movie> movie_vect;
-    //
+    // Checks if file opened correctly
     if (openFile(filestream , filename) != 1)
         exit (-1);
 
@@ -81,24 +83,31 @@ main(){
 
     // Call print() method for to output the vector objects
     cout << endl;
+    // Iterate through the vector elements for printing
     for (const Movie &m : movie_vect){
+        //Call the print method
         m.print();
         cout << endl;
     }
 
 
 }
-
+// Function opens a file using fstream
+// Arguments: fstream reference and string variables
+// Return: 0 is error opening the file, 1 if file opened.
 int openFile (fstream &filestream, string filename){
+    // Opens the file for reading
     filestream.open(filename.data(), ios::in);
+    // If cannot open the file return 0 and abort in main()
     if (!filestream){
         cout << "Error opening file. Program aborting \n";
         return 0;
     }
     else{
+        // If file opened normal, return 1
         return 1;
     }
-
+    // Close the filestream
     filestream.close();
 
 }

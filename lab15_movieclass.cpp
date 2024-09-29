@@ -27,10 +27,13 @@ class Movie{
     void setScreenWriter(string screenw){
         screen_writer = screenw;
     }
+    // Getter for movie title
     string getMovieTitle()  {return movie_title;}
+    // Getter for year released
     string getYearReleased()    {return year_released;}
+    // Getter for screen writer
     string getScreenWriter()    {return screen_writer;}
-
+    // Prints the object from the vector
     void print(){};
 
 };
@@ -41,16 +44,33 @@ main(){
     string filename = "moviefile.txt";
     string line;
     vector <Movie> movie_vect;
-
+    //
     if (openFile(filestream , filename) != 1)
         exit (-1);
-    
 
     while (getline(filestream, line)){
-        Movie movietemp;
+        // Make temperary object for reading the file 
+        Movie tempmovie;
+        // Temporary movie title variable
         string temptitle = line;
+        // Temporary year released
         string tempyear;
+        // Temporary screenwrite
         string tempwriter;
+
+        // Set the movie title for this object
+        tempmovie.setMovieTitle(temptitle);
+        // Add the new movie object into the vector
+        getline(filestream, tempyear);
+        // Set the year released for this object
+        tempmovie.setYearReleased(tempyear);
+        // Read the screen writer from the file
+        getline(filestream, tempwriter);
+        // Set the screen writer for this object
+        tempmovie.setScreenWriter(tempwriter);
+
+        // Add the new movie object into the vector
+        movie_vect.push_back(tempmovie);
     }
 
 }

@@ -4,6 +4,7 @@
 # include <iostream>
 # include <fstream>
 # include <vector>
+# include <iomanip>
 using namespace std;
 
 int openFile(fstream &, string);
@@ -79,8 +80,10 @@ main(){
     }
 
     // Call print() method for to output the vector objects
+    cout << endl;
     for (const Movie &m : movie_vect){
         m.print();
+        cout << endl;
     }
 
 

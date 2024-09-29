@@ -34,7 +34,12 @@ class Movie{
     // Getter for screen writer
     string getScreenWriter()    {return screen_writer;}
     // Prints the object from the vector
-    void print(){};
+    void print() const {
+        cout << "Movie :" << movie_title << endl; // Print the movie title
+        cout << "\tYear released :"<< year_released << endl; // Print the year released
+        cout << "\tScreenwriter: " << screen_writer << endl;
+
+    }
 
 };
 
@@ -72,6 +77,12 @@ main(){
         // Add the new movie object into the vector
         movie_vect.push_back(tempmovie);
     }
+
+    // Call print() method for to output the vector objects
+    for (const Movie &m : movie_vect){
+        m.print();
+    }
+
 
 }
 

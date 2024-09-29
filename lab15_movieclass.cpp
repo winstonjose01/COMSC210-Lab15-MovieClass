@@ -6,7 +6,7 @@
 # include <vector>
 using namespace std;
 
-void openFile(fstream &, string);
+int openFile(fstream &, string);
 
 class Movie{
     private:
@@ -42,19 +42,22 @@ main(){
     string line;
     vector <Movie> movie_vect;
 
-    if (openFile(filestream, filename) != 1){
-        exit(-1);
-    }
+    if (openFile(filestream , filename) != 1)
+        exit (-1);
+    
 
-    while (getlin, line){
-
+    while (getline(filestream, line)){
+        Movie movietemp;
+        string temptitle = line;
+        string tempyear;
+        string tempwriter;
     }
 
 }
 
-void openFile (fstream &filestream, string filename){
-    f.open(filename.data(), ios::in);
-    if (!f){
+int openFile (fstream &filestream, string filename){
+    filestream.open(filename.data(), ios::in);
+    if (!filestream){
         cout << "Error opening file. Program aborting \n";
         return 0;
     }
@@ -62,7 +65,7 @@ void openFile (fstream &filestream, string filename){
         return 1;
     }
 
-    filestream.close()
+    filestream.close();
 
 }
 
